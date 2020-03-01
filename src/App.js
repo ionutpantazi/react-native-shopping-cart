@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import Produse from "./componente/ListaDeProduse";
 import Cos from "./componente/Cos";
+import Numar from "./componente/Numaratoare";
 import './App.css';
 import Dropdown from 'react-bootstrap/Dropdown'
+
+
+
 
 
 
@@ -37,7 +41,6 @@ class App extends React.Component {
     this.setState(state => {
       const a = state.cosProduse
       let dejaAdaugat = false
-
       a.forEach(b => {
         if (b.id === produs.id) {
           dejaAdaugat = true;
@@ -93,32 +96,26 @@ class App extends React.Component {
 
   render() {
     return (
-
       <div>
         <nav class="navbar navbar-light bg-light fixed-top shadow-sm p-3 mb-5 bg-white rounded">
           <span class="text-info h1">Magazinul Online</span>
-          <Dropdown>
           
-          <Dropdown.Toggle style={{backgroundColor: 'transparent', border:'none'}} >
-          <span class="fa-stack fa-2x has-badge" data-count="0">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
-          </span>
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu>
-            
-              <Dropdown.Header><Cos
-              cosProduse={this.state.cosProduse}
-              handleSterge={this.handleSterge}
-              handlePlus={this.handlePlus}
-              handleMinus={this.handleMinus}
-              handlePlateste={this.handlePlateste}
-            /></Dropdown.Header>
-            
-            
-          </Dropdown.Menu>
-        </Dropdown>
+          
+          
+          <div class="dropleft">
+            <div id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <Numar cosProduse={this.state.cosProduse} />
+            </div>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{width:'600px'}}>
+              <Cos              
+                cosProduse={this.state.cosProduse}
+                handleSterge={this.handleSterge}
+                handlePlus={this.handlePlus}
+                handleMinus={this.handleMinus}
+                handlePlateste={this.handlePlateste}
+              />
+            </div>
+          </div>
         </nav>
         <div class="produse">
           <Produse
@@ -126,10 +123,6 @@ class App extends React.Component {
             handleAdauga={this.handleAdauga}
           />
         </div>
-        
-  
-        
-        
       </div>
     )
   }
@@ -138,3 +131,20 @@ class App extends React.Component {
 
 
 export default App;
+
+/*<Dropdown>
+            <Dropdown.Toggle style={{backgroundColor: 'transparent', border:'none'}} >
+              <Numar cosProduse={this.state.cosProduse} />
+            </Dropdown.Toggle>
+          <Dropdown.Menu class="shadow-lg p-3 mb-5 bg-white rounded">
+            <Dropdown.Header>
+              <Cos              
+                cosProduse={this.state.cosProduse}
+                handleSterge={this.handleSterge}
+                handlePlus={this.handlePlus}
+                handleMinus={this.handleMinus}
+                handlePlateste={this.handlePlateste}
+              />
+            </Dropdown.Header>
+          </Dropdown.Menu>
+        </Dropdown>*/

@@ -3,7 +3,7 @@ class Cos extends React.Component {
     render() {
         const { cosProduse } = this.props;
         return (
-            <div style={{width:'400px'}}>
+            <div>
                 {cosProduse.length > 0 &&
                     <div>
                         <div>
