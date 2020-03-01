@@ -2,27 +2,10 @@ import React, { useState } from 'react';
 import Produse from "./componente/ListaDeProduse";
 import Cos from "./componente/Cos";
 import './App.css';
-import Toast from 'react-bootstrap/Toast';
-import Button from 'react-bootstrap/Button';
+import Dropdown from 'react-bootstrap/Dropdown'
 
 
 
-
-const ExampleToast = ({ children }) => {
-  const [show, toggleShow] = useState(false);
-
-  return (
-    <>
-      {!show && <Button onClick={() => toggleShow(true)}>cosul de cumparaturi</Button>}
-      <Toast show={show} onClose={() => toggleShow(false)}>
-        <Toast.Header>
-          <strong className="mr-auto">Cosul de cumparaturi</strong>
-        </Toast.Header>
-        <Toast.Body>{children}</Toast.Body>
-      </Toast>
-    </>
-  );
-};
 
 class App extends React.Component {
   constructor() {
@@ -37,13 +20,13 @@ class App extends React.Component {
     fetch("produse.json")
       .then(res => res.json())
       .then(data => {
-         this.setState({ produse: data })
-         this.produseRezultate()
+        this.setState({ produse: data })
+        this.produseRezultate()
       })
-    .catch(err => {alert("baza de date nu a fost gasita")})
+      .catch(err => { alert("baza de date nu a fost gasita") })
   }
 
-  handleSterge = (click,produs) => {
+  handleSterge = (click, produs) => {
     this.setState(state => {
       const a = state.cosProduse.filter(a => a.id !== produs.id)
       return { cosProduse: a }
@@ -87,7 +70,7 @@ class App extends React.Component {
         if (x.id === produs.id) {
           x.totalProduse -= 1
           if (x.totalProduse <= 0) {
-            x.totalProduse =1
+            x.totalProduse = 1
           }
         }
       })
@@ -109,24 +92,44 @@ class App extends React.Component {
   }
 
   render() {
-    return(
-      
+    return (
+
       <div>
+        <nav class="navbar navbar-light bg-light fixed-top shadow-sm p-3 mb-5 bg-white rounded">
+          <span class="text-info h1">Magazinul Online</span>
+          <Dropdown>
+          
+          <Dropdown.Toggle style={{backgroundColor: 'transparent', border:'none'}} >
+          <span class="fa-stack fa-2x has-badge" data-count="0">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
+          </span>
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            
+              <Dropdown.Header><Cos
+              cosProduse={this.state.cosProduse}
+              handleSterge={this.handleSterge}
+              handlePlus={this.handlePlus}
+              handleMinus={this.handleMinus}
+              handlePlateste={this.handlePlateste}
+            /></Dropdown.Header>
+            
+            
+          </Dropdown.Menu>
+        </Dropdown>
+        </nav>
+        <div class="produse">
+          <Produse
+            produse={this.state.produseRezultate}
+            handleAdauga={this.handleAdauga}
+          />
+        </div>
         
-        <Produse
-          produse={this.state.produseRezultate}
-          handleAdauga={this.handleAdauga}
-        />
+  
         
-        <ExampleToast className="toast">
-        <Cos
-          cosProduse={this.state.cosProduse}
-          handleSterge={this.handleSterge}
-          handlePlus={this.handlePlus}
-          handleMinus={this.handleMinus}
-          handlePlateste={this.handlePlateste}
-        />
-      </ExampleToast>
+        
       </div>
     )
   }
@@ -135,4 +138,3 @@ class App extends React.Component {
 
 
 export default App;
-//fafaffa

@@ -1,22 +1,18 @@
-import React from 'react';
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
-
+import React from 'react'
 class Produse extends React.Component {
     render() {
         const listaProduse = this.props.produse.map(produs => (
-            <Card style={{ width: '18rem' }} className="col-md-4">
-                <Card.Img variant="top" src={produs.imagine} alt={produs.nume}/>
-                <Card.Body>
-                    <Card.Title>{produs.nume}</Card.Title>
-                    <Card.Text>{produs.descriere}</Card.Text>
-                    <span>{produs.pret}</span>
-                    <Button variant="primary" onClick={(click) => this.props.handleAdauga(click, produs)}>adauga</Button>
-                </Card.Body>
-            </Card>
+            <div class="card col-md-3 border-white">
+                <img src={produs.imagine} alt={produs.nume} class="card-img-top zoom" data-toggle="modal" data-target="#exampleModal" />
+                <div class="card-body">
+                    <h5 class="text-center font-weight-bold">{produs.nume}</h5>
+                    <span>{produs.pret} $/kg</span>
+                    <button onClick={(click) => this.props.handleAdauga(click, produs)} class="btn btn-outline-primary btn-sm float-right">Adauga in cos</button>
+                </div>
+            </div>
         ))
         return (
-            <div  className="row">
+            <div className="row">
                 {listaProduse}
             </div>
         )
