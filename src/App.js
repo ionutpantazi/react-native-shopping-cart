@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import Produse from "./componente/ListaDeProduse";
 import Cos from "./componente/Cos";
 import Numar from "./componente/Numaratoare";
+import "antd/dist/antd.css";
+import { Drawer, Button } from 'antd';
+import { Divider } from 'antd';
 import './App.css';
-import Dropdown from 'react-bootstrap/Dropdown'
 
 
 
@@ -17,7 +19,8 @@ class App extends React.Component {
     this.state = {
       cosProduse: [],
       produse: [],
-      produseRezultate: []
+      produseRezultate: [],
+      visible : false 
     }
   }
   componentWillMount() {
@@ -38,6 +41,7 @@ class App extends React.Component {
   }
 
   handleAdauga = (click, produs) => {
+    this.showDrawer()
     this.setState(state => {
       const a = state.cosProduse
       let dejaAdaugat = false
@@ -53,6 +57,18 @@ class App extends React.Component {
       return { cosProduse: a }
     })
   }
+
+  showDrawer = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+
+  onClose = () => {
+    this.setState({
+      visible: false,
+    });
+  };
 
   handlePlus = (click, produs) => {
     this.setState(state => {
@@ -97,32 +113,33 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <nav class="navbar navbar-light bg-light fixed-top shadow-sm p-3 mb-5 bg-white rounded">
-          <span class="text-info h1">Magazinul Online</span>
-          
-          
-          
-          <div class="dropleft">
-            <div id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <Numar cosProduse={this.state.cosProduse} />
-            </div>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{width:'600px'}}>
-              <Cos              
-                cosProduse={this.state.cosProduse}
-                handleSterge={this.handleSterge}
-                handlePlus={this.handlePlus}
-                handleMinus={this.handleMinus}
-                handlePlateste={this.handlePlateste}
-              />
-            </div>
-          </div>
-        </nav>
+        <div onClick={this.showDrawer}>
+          <Numar cosProduse={this.state.cosProduse} />
+        </div>
+        <Divider />
         <div class="produse">
           <Produse
             produse={this.state.produseRezultate}
             handleAdauga={this.handleAdauga}
           />
         </div>
+        <Drawer
+          title="Cosul de cumparaturi"
+          placement="right"
+          closable={false}
+          onClose={this.onClose}
+          visible={this.state.visible}
+        >
+          <Cos
+            cosProduse={this.state.cosProduse}
+            handleSterge={this.handleSterge}
+            handlePlus={this.handlePlus}
+            handleMinus={this.handleMinus}
+            handlePlateste={this.handlePlateste}
+          />
+        </Drawer>
+        <Divider />
+        Site creat de mine
       </div>
     )
   }
@@ -131,20 +148,3 @@ class App extends React.Component {
 
 
 export default App;
-
-/*<Dropdown>
-            <Dropdown.Toggle style={{backgroundColor: 'transparent', border:'none'}} >
-              <Numar cosProduse={this.state.cosProduse} />
-            </Dropdown.Toggle>
-          <Dropdown.Menu class="shadow-lg p-3 mb-5 bg-white rounded">
-            <Dropdown.Header>
-              <Cos              
-                cosProduse={this.state.cosProduse}
-                handleSterge={this.handleSterge}
-                handlePlus={this.handlePlus}
-                handleMinus={this.handleMinus}
-                handlePlateste={this.handlePlateste}
-              />
-            </Dropdown.Header>
-          </Dropdown.Menu>
-        </Dropdown>*/

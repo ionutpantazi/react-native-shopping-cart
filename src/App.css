@@ -37,53 +37,12 @@
   }
 }
 
-.zoom {
-  transition: transform .4s;
-  cursor: zoom-in;
-}
-
-.zoom:hover {
-  -ms-transform: scale(1.1); /* IE 9 */
-  -webkit-transform: scale(1.1); /* Safari 3-8 */
-  transform: scale(1.1); 
-}
 
 .produse {
-  padding : 200px 150px;
+  padding : 50px 150px;
 }
 
-.fa-stack[data-count]:after {
-  position: absolute;
-  right: 0%;
-  top: 0%;
-  content: attr(data-count);
-  font-size: 40%;
-  padding: .6em;
-  border-radius: 999px;
-  line-height: .75em;
-  color: white;
-  color: #DF0000;
-  text-align: center;
-  min-width: 2em;
-  font-weight: bold;
-  background: white;
-  border-style: solid;
-}
 
-.fa-circle {
-  color: #DF0000;
-}
 
-.red-cart {
-  color: #DF0000;
-  background: white;
-}
 
-.dropdown-toggle {
-  background-color: transparent;
-  border-color: #fff;
-  border-style: solid;
-  border-top: none;
-  border-right: none;
-  border-left: none;
-}
+
