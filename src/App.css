@@ -37,12 +37,24 @@
   }
 }
 
-
-.produse {
+.continut {
   padding : 50px 150px;
+  background-color: #fafaff;
+}
+.row {
+	align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
-
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td {
+  text-align: center;
+  border: 1px solid #dddddd5b;
+}
 
 
 

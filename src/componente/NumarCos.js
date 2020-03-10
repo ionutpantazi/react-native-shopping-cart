@@ -1,16 +1,14 @@
 import React from 'react'
 import { Badge } from 'antd';
-import { ShoppingCartOutlined } from '@ant-design/icons';
 class Numar extends React.Component {
     render() {
         const { cosProduse } = this.props;
         return (
-            <div style={{ fontSize: '40px', color: '#08c' }}>
+            <span>
                 <Badge count={cosProduse.length}>
-                <ShoppingCartOutlined />
+                <img src="imagini/cos.png" alt="cos" height="60" width="60" />
                 </Badge>
-            </div>
-            
+            </span>
         )
     }
 }

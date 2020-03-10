@@ -1,36 +1,39 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Produse from "./componente/ListaDeProduse";
 import Cos from "./componente/Cos";
-import Numar from "./componente/Numaratoare";
+import Numar from "./componente/NumarCos";
+import Filtru from "./componente/Filtru";
+import { Drawer , Divider , message } from 'antd';
 import "antd/dist/antd.css";
-import { Drawer, Button } from 'antd';
-import { Divider } from 'antd';
 import './App.css';
 
-
-
-
-
-
-
 class App extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       cosProduse: [],
       produse: [],
       produseRezultate: [],
-      visible : false 
+      produseSortate: [],
+      visible : false,
     }
   }
-  componentWillMount() {
+  componentDidMount() {
     fetch("produse.json")
       .then(res => res.json())
       .then(data => {
         this.setState({ produse: data })
         this.produseRezultate()
       })
-      .catch(err => { alert("baza de date nu a fost gasita") })
+      .catch(err => {this.mesajEroare2()})
+  }
+
+  mesajEroare1 = () => {
+    message.error('Acest produs a fost deja adaugat');
+  }
+
+  mesajEroare2 = () => {
+    message.error('Baza de date nu a fost gasita');
   }
 
   handleSterge = (click, produs) => {
@@ -48,7 +51,7 @@ class App extends React.Component {
       a.forEach(b => {
         if (b.id === produs.id) {
           dejaAdaugat = true;
-          alert("deja adaugat")
+          this.mesajEroare1()
         }
       })
       if (!dejaAdaugat) {
@@ -106,25 +109,46 @@ class App extends React.Component {
 
   produseRezultate = () => {
     this.setState(state => {
+      if (state.sort === "pret") {
+        state.produse.sort((a, b) => (a.pret > b.pret) ? 1 : -1)
+      }
+      else if (state.sort === "nume") {
+        state.produse.sort((a, b) => (a.nume > b.nume) ? 1 : -1)
+      }
+      else if (state.sort === "data") {
+        state.produse.sort((a, b) => (a.data > b.data) ? 1 : -1)
+      }
       return { produseRezultate: state.produse }
     })
   }
 
+  handleSortare = (event) => {
+    this.setState({ sort: event });
+    this.produseRezultate();
+  };
+
   render() {
     return (
       <div>
-        <div onClick={this.showDrawer}>
-          <Numar cosProduse={this.state.cosProduse} />
-        </div>
-        <Divider />
-        <div class="produse">
+        <div className="continut">
+          <span onClick={this.showDrawer}>
+            <Numar cosProduse={this.state.cosProduse} />
+          </span>
+          <div style={{float:'right'}}>
+            <Filtru handleSortare={this.handleSortare} />
+          </div>
+          <Divider/>
           <Produse
             produse={this.state.produseRezultate}
             handleAdauga={this.handleAdauga}
           />
+          <Divider />
+          <div>
+            <a class="github-button" href="https://github.com/ionutpantazi" data-color-scheme="no-preference: light; light: light; dark: light;" data-size="large" data-show-count="true" aria-label="Follow @ionutpantazi on GitHub">Follow @ionutpantazi</a>
+          </div>
         </div>
-        <Drawer
-          title="Cosul de cumparaturi"
+
+        <Drawer width={500}
           placement="right"
           closable={false}
           onClose={this.onClose}
@@ -138,8 +162,6 @@ class App extends React.Component {
             handlePlateste={this.handlePlateste}
           />
         </Drawer>
-        <Divider />
-        Site creat de mine
       </div>
     )
   }
