@@ -16,6 +16,7 @@ class App extends React.Component {
       produseRezultate: [],
       produseSortate: [],
       visible : false,
+      sortat : "nume"
     }
   }
   componentDidMount() {
@@ -109,13 +110,13 @@ class App extends React.Component {
 
   produseRezultate = () => {
     this.setState(state => {
-      if (state.sort === "pret") {
+      if (state.sortat === "pret") {
         state.produse.sort((a, b) => (a.pret > b.pret) ? 1 : -1)
       }
-      else if (state.sort === "nume") {
+      else if (state.sortat === "nume") {
         state.produse.sort((a, b) => (a.nume > b.nume) ? 1 : -1)
       }
-      else if (state.sort === "data") {
+      else if (state.sortat === "data") {
         state.produse.sort((a, b) => (a.data > b.data) ? 1 : -1)
       }
       return { produseRezultate: state.produse }
@@ -123,7 +124,7 @@ class App extends React.Component {
   }
 
   handleSortare = (event) => {
-    this.setState({ sort: event });
+    this.setState({ sortat: event });
     this.produseRezultate();
   };
 

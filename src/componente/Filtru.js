@@ -6,7 +6,7 @@ class Filtru extends React.Component {
         return(
             <div>
                 <span>ordoneaza dupa: </span>
-                <Select style={{ width: 140 }} value={this.props.sort} onChange={this.props.handleSortare}>
+                <Select defaultValue="nume" style={{ width: 140 }} value={this.props.sortat} onChange={this.props.handleSortare}>
                     <Option value="pret">pret</Option>
                     <Option value="nume">nume</Option>
                     <Option value="data">data adaugata</Option>
