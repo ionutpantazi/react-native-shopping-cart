@@ -1,12 +1,8 @@
 .continut {
-  padding : 50px 150px;
-  background-color: #fafaff;
+  padding : 50px 50px;
+  background-color: #fafaffd2;
 }
-.row {
-	align-items: center;
-  display: flex;
-  justify-content: center;
-}
+
 
 table {
   border-collapse: collapse;
