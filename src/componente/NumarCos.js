@@ -10,8 +10,7 @@ class Numar extends React.Component {
         return (
             <span>
                 <Badge count={cosProduse.length}> 
-                <IconFont type="icon-Shoppingcartfinancebusiness" style={{ fontSize: '50px' }}/>
-                
+                    <IconFont type="icon-Shoppingcartfinancebusiness" style={{ fontSize: '40px' }}/>
                 </Badge>
             </span>
         )

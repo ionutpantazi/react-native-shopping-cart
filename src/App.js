@@ -3,7 +3,7 @@ import Produse from "./componente/ListaDeProduse";
 import Cos from "./componente/Cos";
 import Numar from "./componente/NumarCos";
 import Filtru from "./componente/Filtru";
-import { Drawer , Divider , message } from 'antd';
+import { Drawer , message , Layout  } from 'antd';
 import "antd/dist/antd.css";
 import './App.css';
 
@@ -129,26 +129,26 @@ class App extends React.Component {
   };
 
   render() {
+    const { Header, Footer, Content } = Layout;
     return (
-      <div>
-        <div className="continut">
+      <Layout>
+        <Header className="header">
           <span onClick={this.showDrawer}>
             <Numar cosProduse={this.state.cosProduse} />
           </span>
           <div style={{float:'right'}}>
             <Filtru handleSortare={this.handleSortare} />
           </div>
-          <Divider/>
+        </Header>
+        <Content className="content">
           <Produse
             produse={this.state.produseRezultate}
             handleAdauga={this.handleAdauga}
           />
-          <Divider />
-          <div>
+        </Content>
+        <Footer className="footer">
             <a class="github-button" href="https://github.com/ionutpantazi" data-color-scheme="no-preference: light; light: light; dark: light;" data-size="large" data-show-count="true" aria-label="Follow @ionutpantazi on GitHub">Follow @ionutpantazi</a>
-          </div>
-        </div>
-
+        </Footer>
         <Drawer width={500}
           placement="right"
           closable={false}
@@ -163,7 +163,7 @@ class App extends React.Component {
             handlePlateste={this.handlePlateste}
           />
         </Drawer>
-      </div>
+      </Layout>
     )
   }
 }

@@ -1,9 +1,3 @@
-.continut {
-  padding : 50px 50px;
-  background-color: #fafaffd2;
-}
-
-
 table {
   border-collapse: collapse;
   width: 100%;
@@ -11,4 +5,22 @@ table {
 th, td {
   text-align: center;
   border: 1px solid #dddddd5b;
+}
+
+.header {
+  padding-top: 10px;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: 80px;
+  background-color: aliceblue;
+}
+
+.content {
+  padding : 82px 50px 20px 50px;
+  background-color: aliceblue;
+}
+
+.footer {
+  background-color: rgb(223, 239, 253);
 }
