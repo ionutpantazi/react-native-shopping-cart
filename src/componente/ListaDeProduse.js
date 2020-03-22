@@ -2,25 +2,29 @@ import React from 'react';
 import { Row, Col, Card, Tooltip, Modal } from 'antd';
 import { createFromIconfontCN } from '@ant-design/icons';
 class Produse extends React.Component {
-    state = { visible: false };
-    showModal = () => {
-        this.setState({
-          visible: true,
-        });
-    };
+    state = { visible: false, modal: [] };
+    showModal = (click , produs) => {
+        this.setState(state => {
+            return {
+              modalImagine : produs.imagine,
+              modalDescriere : produs.descriere,
+              modalNume : produs.nume,
+              visible:true
+            }
+        })
+      }
     handleOk = e => {
-        console.log(e);
         this.setState({
           visible: false,
         });
     };
     handleCancel = e => {
-        console.log(e);
         this.setState({
           visible: false,
         });
     };
     render() {
+        const { modalImagine , modalDescriere , modalNume } = this.state
         const { Meta } = Card;
         const IconFont = createFromIconfontCN({
             scriptUrl: '//at.alicdn.com/t/font_1697557_irzp4mqx6t8.js',
@@ -41,7 +45,7 @@ class Produse extends React.Component {
                             <IconFont type="icon-iconaddtocart" style={{ fontSize: '30px' }} onClick={(click) => this.props.handleAdauga(click, produs)}/>
                         </Tooltip>,
                         <Tooltip title="detalii">
-                            <IconFont type="icon-tariffdetails" style={{ fontSize: '30px' }} onClick={this.showModal}/>
+                            <IconFont type="icon-tariffdetails" style={{ fontSize: '30px' }} onClick={(click) => this.showModal(click, produs)}/>
                         </Tooltip>
                     ]}  
                 >
@@ -57,6 +61,20 @@ class Produse extends React.Component {
                 <Row justify="space-around" align="middle" gutter={[24, 24]}>
                     {listaProduse}
                 </Row>
+                <Modal
+                    title={modalNume}
+                    visible={this.state.visible}
+                    onOk={this.handleOk}
+                    onCancel={this.handleCancel}
+                    width={400}
+                >
+                    <Card
+                        bordered={false}
+                        cover={<img src={modalImagine} alt={modalImagine} style={{ width: 200, height: 200 }} />}
+                    >
+                        <Meta description={modalDescriere} />
+                    </Card>
+                </Modal>
             </div>
         )
     }

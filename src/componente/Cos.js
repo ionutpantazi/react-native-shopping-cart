@@ -14,9 +14,9 @@ class Cos extends React.Component {
                     }
                  />
             }
-            <div>
                 {cosProduse.length > 0 &&
                     <div>
+                        <br />
                         <table>
                             <thead key="thead">
                                 <tr key="trow">
@@ -46,7 +46,6 @@ class Cos extends React.Component {
                         <Button style={{float:'right'}} type="primary" onClick={(click) => this.props.handlePlateste()}>plateste</Button>
                     </div>
                 }
-            </div>
             </div>
         )
     }

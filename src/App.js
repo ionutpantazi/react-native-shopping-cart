@@ -16,7 +16,8 @@ class App extends React.Component {
       produseRezultate: [],
       produseSortate: [],
       visible : false,
-      sortat : "nume"
+      sortat : "nume",
+      produs :[]
     }
   }
   componentDidMount() {
@@ -136,22 +137,23 @@ class App extends React.Component {
           <span onClick={this.showDrawer}>
             <Numar cosProduse={this.state.cosProduse} />
           </span>
-          <div style={{float:'right'}}>
-            <Filtru handleSortare={this.handleSortare} />
-          </div>
         </Header>
         <Content className="content">
+          <div className="filtru">
+            <Filtru handleSortare={this.handleSortare} />
+          </div>
+          <br />
           <Produse
             produse={this.state.produseRezultate}
             handleAdauga={this.handleAdauga}
           />
         </Content>
         <Footer className="footer">
-            <a class="github-button" href="https://github.com/ionutpantazi" data-color-scheme="no-preference: light; light: light; dark: light;" data-size="large" data-show-count="true" aria-label="Follow @ionutpantazi on GitHub">Follow @ionutpantazi</a>
+            <a className="github-button" href="https://github.com/ionutpantazi" data-color-scheme="no-preference: light; light: light; dark: light;" data-size="large" data-show-count="true" aria-label="Follow @ionutpantazi on GitHub">Follow @ionutpantazi</a>
         </Footer>
         <Drawer width={500}
           placement="right"
-          closable={false}
+          closable={true}
           onClose={this.onClose}
           visible={this.state.visible}
         >
