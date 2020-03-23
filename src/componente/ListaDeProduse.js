@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Card, Tooltip, Modal } from 'antd';
+import { Row, Col, Card, Tooltip, Modal, Layout, Rate  } from 'antd';
 import { createFromIconfontCN } from '@ant-design/icons';
 class Produse extends React.Component {
     state = { visible: false, modal: [] };
@@ -9,6 +9,8 @@ class Produse extends React.Component {
               modalImagine : produs.imagine,
               modalDescriere : produs.descriere,
               modalNume : produs.nume,
+              modalRating : produs.rating,
+              modalData : produs.data,
               visible:true
             }
         })
@@ -24,7 +26,8 @@ class Produse extends React.Component {
         });
     };
     render() {
-        const { modalImagine , modalDescriere , modalNume } = this.state
+        const { Header, Footer, Sider, Content } = Layout;
+        const { modalImagine , modalDescriere , modalNume , modalRating , modalData } = this.state
         const { Meta } = Card;
         const IconFont = createFromIconfontCN({
             scriptUrl: '//at.alicdn.com/t/font_1697557_irzp4mqx6t8.js',
@@ -41,10 +44,10 @@ class Produse extends React.Component {
                         />
                     }
                     actions={[
-                        <Tooltip title="adauga in cos">
+                        <Tooltip title="adauga in cos" trigger="hover , click">
                             <IconFont type="icon-iconaddtocart" style={{ fontSize: '30px' }} onClick={(click) => this.props.handleAdauga(click, produs)}/>
                         </Tooltip>,
-                        <Tooltip title="detalii">
+                        <Tooltip title="detalii" trigger="hover , click">
                             <IconFont type="icon-tariffdetails" style={{ fontSize: '30px' }} onClick={(click) => this.showModal(click, produs)}/>
                         </Tooltip>
                     ]}  
@@ -68,12 +71,21 @@ class Produse extends React.Component {
                     onCancel={this.handleCancel}
                     width={400}
                 >
-                    <Card
-                        bordered={false}
-                        cover={<img src={modalImagine} alt={modalImagine} style={{ width: 200, height: 200 }} />}
-                    >
-                        <Meta description={modalDescriere} />
-                    </Card>
+                    <Layout>
+                        <Layout>
+                        <Sider>
+                            <img src={modalImagine} alt={modalImagine} style={{ width: 200, height: 200 }} />
+                        </Sider>
+                        <Content style={{backgroundColor: "white"}}>
+                            {modalDescriere}
+                        </Content>
+                        </Layout>
+                        <Footer style={{backgroundColor: "white", height: "60px", textAlign: "center"}}>
+                            <span>Rating:{' '}<Rate disabled value={modalRating} /></span><br />
+                            <span>Data adaugata: {modalData}</span>
+                        </Footer>
+                    </Layout>
+                    
                 </Modal>
             </div>
         )

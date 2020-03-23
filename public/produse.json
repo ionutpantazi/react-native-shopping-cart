@@ -1,8 +1,56 @@
 [
-    {"id":1,"nume":"avocado","imagine":"./imagini/avocado.jpg","pret":5.20,"data":"2020","descriere":"Avocado has a rich, buttery and creamy flavor. Depending on what cultivar it is, the avocado can have hints of sweetness as well as a mild, earthy vegetable taste."},
-    {"id":2,"nume":"banane","imagine":"./imagini/banane.jpg","pret":4.50,"data":"2019"},
-    {"id":3,"nume":"cartofi","imagine":"./imagini/cartofi.jpg","pret":2.10,"data":"2019"},
-    {"id":4,"nume":"mere","imagine":"./imagini/mere.jpg","pret":2.99,"data":"2021"},
-    {"id":5,"nume":"rosii","imagine":"./imagini/rosii.jpg","pret":3.50,"data":"2022"},
-    {"id":6,"nume":"struguri","imagine":"./imagini/struguri.jpg","pret":4.15,"data":"2021"}
+    {
+        "id":1,
+        "nume":"avocado",
+        "imagine":"./imagini/avocado.jpg",
+        "pret":5.20,
+        "data":"2020",
+        "descriere":"Avocado este un arbore originar din Mexic și Guatemala (America Centrală), clasificat cu floarea din familia Lauracee împreună cu camforul, scorțișoara și dafinul.",
+        "rating":5
+    },
+    {
+        "id":2,
+        "nume":"banane",
+        "imagine":"./imagini/banane.jpg",
+        "pret":4.50,
+        "data":"2019",
+        "descriere":"Banana este un fruct de forma alungita, usor curbata, care creste in bananier grupata intr-un ciorchine mare. Coaja sa este de culoare galbena, verde sau rosie depinzand de soi.",
+        "rating":1
+    },
+    {
+        "id":3,
+        "nume":"cartofi",
+        "imagine":"./imagini/cartofi.jpg",
+        "pret":2.10,
+        "data":"2019",
+        "descriere":"Cartoful (Solanum tuberosum) este o plantă erbacee din familia solanaceelor, cu flori albe sau violete și tulpini subterane terminate cu tuberculi de formă rotundă, ovală sau alungită.",
+        "rating":3
+    },
+    {
+        "id":4,
+        "nume":"mere",
+        "imagine":"./imagini/mere.jpg",
+        "pret":2.99,
+        "data":"2021",
+        "descriere":"Mărul este o specie de plante din familia Rosaceae. Această specie cuprinde între 44 și 55 de soiuri, care se prezintă ca pomi sau arbuști.",
+        "rating":5
+    },
+    {
+        "id":5,
+        "nume":"rosii",
+        "imagine":"./imagini/rosii.jpg",
+        "pret":3.50,
+        "data":"2022",
+        "descriere":"Roșia este o plantă nativă a sudului Americii de Nord și nordului Americii de Sud, având un areal natural de extindere din centrul Mexicului până în Peru.",
+        "rating":2
+    },
+    {
+        "id":6,
+        "nume":"struguri",
+        "imagine":"./imagini/struguri.jpg",
+        "pret":4.15,
+        "data":"2021",
+        "descriere":"Strugurele este fructul (numit bacă) viței de vie. Strugurele este unul dintre cele mai cultivate fructe din lume, cu 68 milioane de tone produse în 2010, în urma citricelor si a bananelor.",
+        "rating":4
+    }
 ]
