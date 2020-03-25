@@ -15,18 +15,13 @@ class Produse extends React.Component {
             }
         })
       }
-    handleOk = e => {
-        this.setState({
-          visible: false,
-        });
-    };
     handleCancel = e => {
         this.setState({
           visible: false,
         });
     };
     render() {
-        const { Header, Footer, Sider, Content } = Layout;
+        const { Footer, Sider, Content } = Layout;
         const { modalImagine , modalDescriere , modalNume , modalRating , modalData } = this.state
         const { Meta } = Card;
         const IconFont = createFromIconfontCN({
@@ -67,7 +62,7 @@ class Produse extends React.Component {
                 <Modal
                     title={modalNume}
                     visible={this.state.visible}
-                    onOk={this.handleOk}
+                    footer={null}
                     onCancel={this.handleCancel}
                     width={400}
                 >
@@ -80,12 +75,11 @@ class Produse extends React.Component {
                             {modalDescriere}
                         </Content>
                         </Layout>
-                        <Footer style={{backgroundColor: "white", height: "60px", textAlign: "center"}}>
+                        <Footer style={{backgroundColor: "white", height: "70px", textAlign: "center"}}>
                             <span>Rating:{' '}<Rate disabled value={modalRating} /></span><br />
                             <span>Data adaugata: {modalData}</span>
                         </Footer>
                     </Layout>
-                    
                 </Modal>
             </div>
         )

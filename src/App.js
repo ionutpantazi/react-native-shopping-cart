@@ -3,7 +3,7 @@ import Produse from "./componente/ListaDeProduse";
 import Cos from "./componente/Cos";
 import Numar from "./componente/NumarCos";
 import Filtru from "./componente/Filtru";
-import { Drawer , message , Layout  } from 'antd';
+import { Drawer , message , Layout , Button  } from 'antd';
 import "antd/dist/antd.css";
 import './App.css';
 
@@ -12,12 +12,9 @@ class App extends React.Component {
     super(props)
     this.state = {
       cosProduse: [],
-      produse: [],
       produseRezultate: [],
-      produseSortate: [],
       visible : false,
       sortat : "nume",
-      produs :[]
     }
   }
   componentDidMount() {
@@ -131,6 +128,8 @@ class App extends React.Component {
 
   render() {
     const { Header, Footer, Content } = Layout;
+    const data = this.state.cosProduse
+    console.log(this.state)
     return (
       <Layout>
         <Header className="header">
@@ -151,11 +150,26 @@ class App extends React.Component {
         <Footer className="footer">
             <a className="github-button" href="https://github.com/ionutpantazi" data-color-scheme="no-preference: light; light: light; dark: light;" data-size="large" data-show-count="true" aria-label="Follow @ionutpantazi on GitHub">Follow @ionutpantazi</a>
         </Footer>
-        <Drawer width={500}
+        <Drawer
+          title="Cosul de cumparaturi"
+          width={300}
           placement="right"
           closable={true}
           onClose={this.onClose}
           visible={this.state.visible}
+          footer={
+            <div>
+              <div style={{float:'left'}}>
+                Total de plata: {(Math.round(data.reduce((a, c) => (a + c.pret * c.totalProduse), 0) * 100) / 100).toFixed(2)} lei
+              </div>
+              <div style={{float:'right'}}>
+                <Button disabled={this.state.cosProduse == 0} 
+                  onClick={this.handlePlateste} type="primary">
+                  Plateste
+                </Button>
+              </div>
+            </div>
+          }
         >
           <Cos
             cosProduse={this.state.cosProduse}
@@ -169,7 +183,5 @@ class App extends React.Component {
     )
   }
 }
-
-
 
 export default App;
