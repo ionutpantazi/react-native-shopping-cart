@@ -43,24 +43,27 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-analytics.js"></script>
 
 <script>
   // Your web app's Firebase configuration
-    var firebaseConfig = {
-      apiKey: "AIzaSyDYa26FzwUHx4hpK5afaB-_i-u-03iSD0w",
-      authDomain: "react-native-shopping-ca-21a32.firebaseapp.com",
-      databaseURL: "https://react-native-shopping-ca-21a32.firebaseio.com",
-      projectId: "react-native-shopping-ca-21a32",
-      storageBucket: "react-native-shopping-ca-21a32.appspot.com",
-      messagingSenderId: "701515584952",
-      appId: "1:701515584952:web:370bc1c65147f038096b4d"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
+  var firebaseConfig = {
+    apiKey: "AIzaSyBQZ6scNc46Fy8hztn7zrrPFtsbFAs6Lv8",
+    authDomain: "ionutpantazi-ecommerce.firebaseapp.com",
+    databaseURL: "https://ionutpantazi-ecommerce.firebaseio.com",
+    projectId: "ionutpantazi-ecommerce",
+    storageBucket: "ionutpantazi-ecommerce.appspot.com",
+    messagingSenderId: "264189910583",
+    appId: "1:264189910583:web:361c1355cd77575a2669b2",
+    measurementId: "G-04FFSC2BCE"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
 </script>
 </html>

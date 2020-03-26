@@ -21,7 +21,7 @@ class Produse extends React.Component {
         });
     };
     render() {
-        const { Footer, Sider, Content } = Layout;
+        const { Footer } = Layout;
         const { modalImagine , modalDescriere , modalNume , modalRating , modalData } = this.state
         const { Meta } = Card;
         const IconFont = createFromIconfontCN({
@@ -30,6 +30,7 @@ class Produse extends React.Component {
         const listaProduse = this.props.produse.map(produs => (
             <Col xs={{ span: 12 }} lg={{ span: 8 }} >
                 <Card
+                    size="small"
                     hoverable
                     cover={
                         <img
@@ -40,10 +41,10 @@ class Produse extends React.Component {
                     }
                     actions={[
                         <Tooltip title="adauga in cos" trigger="hover , click">
-                            <IconFont type="icon-iconaddtocart" style={{ fontSize: '30px' }} onClick={(click) => this.props.handleAdauga(click, produs)}/>
+                            <div className="responsive"><IconFont type="icon-iconaddtocart" onClick={(click) => this.props.handleAdauga(click, produs)}/></div>
                         </Tooltip>,
                         <Tooltip title="detalii" trigger="hover , click">
-                            <IconFont type="icon-tariffdetails" style={{ fontSize: '30px' }} onClick={(click) => this.showModal(click, produs)}/>
+                            <div className="responsive"><IconFont type="icon-tariffdetails" onClick={(click) => this.showModal(click, produs)}/></div>
                         </Tooltip>
                     ]}  
                 >
@@ -64,22 +65,19 @@ class Produse extends React.Component {
                     visible={this.state.visible}
                     footer={null}
                     onCancel={this.handleCancel}
-                    width={400}
                 >
                     <Layout>
-                        <Layout>
-                        <Sider>
-                            <img src={modalImagine} alt={modalImagine} style={{ width: 200, height: 200 }} />
-                        </Sider>
-                        <Content style={{backgroundColor: "white"}}>
-                            {modalDescriere}
-                        </Content>
+                        <div style={{backgroundColor:'white', display:'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
+                            <img src={modalImagine} alt={modalImagine} style={{ width: '30vmin', height: 'auto'}} />
+                            <div style={{ textAlign: "center" }}>
+                                {modalDescriere}
+                            </div>
+                        </div>
                         </Layout>
-                        <Footer style={{backgroundColor: "white", height: "70px", textAlign: "center"}}>
+                        <Footer style={{backgroundColor: "white", height: "80px", textAlign: "center"}}>
                             <span>Rating:{' '}<Rate disabled value={modalRating} /></span><br />
                             <span>Data adaugata: {modalData}</span>
                         </Footer>
-                    </Layout>
                 </Modal>
             </div>
         )

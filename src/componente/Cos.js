@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col , Empty , Card } from 'antd';
+import { Row , Empty , Card } from 'antd';
 import { DeleteOutlined, PlusCircleOutlined, MinusCircleOutlined } from '@ant-design/icons';
 
 class Cos extends React.Component {

@@ -129,7 +129,6 @@ class App extends React.Component {
   render() {
     const { Header, Footer, Content } = Layout;
     const data = this.state.cosProduse
-    console.log(this.state)
     return (
       <Layout>
         <Header className="header">
@@ -152,7 +151,7 @@ class App extends React.Component {
         </Footer>
         <Drawer
           title="Cosul de cumparaturi"
-          width={300}
+          width={260}
           placement="right"
           closable={true}
           onClose={this.onClose}
